@@ -1,0 +1,20 @@
+namespace MyRecipe2.Data.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class initialMigration : DbMigration
+    {
+        public override void Up()
+        {
+            AddColumn("dbo.Recipe", "TypeofCuisine", c => c.Int(nullable: false));
+            DropColumn("dbo.Recipe", "Servings");
+        }
+        
+        public override void Down()
+        {
+            AddColumn("dbo.Recipe", "Servings", c => c.Int(nullable: false));
+            DropColumn("dbo.Recipe", "TypeofCuisine");
+        }
+    }
+}
